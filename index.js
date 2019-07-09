@@ -4,7 +4,7 @@ const UrlGenerator = require('./urlGenerator');
 const fileWriter = require('./fileWriter');
 const config = require('./config');
 
-const pendingQueue = new PendingQueue(50), {endDate} = config;
+const pendingQueue = new PendingQueue(10), {endDate} = config;
 let daysLeft = config.days;
 
 function categoryPromiseGenerator(url, date) {
