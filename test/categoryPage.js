@@ -1,4 +1,4 @@
-const parser = require('../pageParser');
+const parser = require('../utils/pageParser');
 
 parser.categoryPage('http://paper.people.com.cn/rmrb/html/2019-07/08/nbs.D110000renmrb_01.htm').then(list => {
   console.log(list);

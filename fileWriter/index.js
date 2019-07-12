@@ -13,6 +13,7 @@ const init = fsPromises.mkdir('./output')
 module.exports = async function (date, title, content) {
   await init;
   const dateString = date.toCustomString();
+  title = title.replace(/(\\)|(\/)/g, ' ');
   return await fsPromises.writeFile(`./output/${dateString}_${title}.txt`, title + os.EOL + content)
     .catch(console.error);
 };

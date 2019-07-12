@@ -4,7 +4,7 @@ function dateOrToday(dateString) {
 
 const config = {
   endDate: '', // 截止日期，可填写格式：yyyy-mm-dd 或不填写（即今天）
-  days: 3, // 回溯天数
+  days: 30, // 回溯天数
 };
 
 config.endDate = dateOrToday(config.endDate);

@@ -1,6 +1,6 @@
-const PendingQueue = require('./pendingQueue');
-const PageParsers = require('./pageParser');
-const UrlGenerator = require('./urlGenerator');
+const PendingQueue = require('./utils/pendingQueue');
+const PageParsers = require('./utils/pageParser');
+const UrlGenerator = require('./utils/urlGenerator');
 const fileWriter = require('./fileWriter');
 const config = require('./config');
 

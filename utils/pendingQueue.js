@@ -17,7 +17,11 @@ class PendingQueue {
   load() {
     const promiseGenerator = this.generators.shift();
     promiseGenerator()
-      .catch(console.error)
+      .catch((e) => {
+        if (e.config && e.config.url)
+          console.log(`解析${e.config.url}失败`);
+        else console.error(e);
+      })
       .finally(() => {
         this.capacity++;
         if (this.maximum === this.capacity) {

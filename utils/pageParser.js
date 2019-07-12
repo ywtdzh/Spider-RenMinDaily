@@ -3,7 +3,15 @@ const request = require('axios');
 const os = require('os');
 
 async function loadPage(url) {
-  const response = await request.get(url);
+  let retry = 5, response;
+  while (retry) {
+    try {
+      response = await request.get(url);
+      break;
+    } catch (e) {
+      if (retry === 0) throw e;
+    }
+  }
   return cheerio.load(response.data);
 }
 
@@ -22,7 +30,7 @@ async function categoryPage(categoryUrl) {
 }
 
 async function contentPage(contentUrl) {
-  console.log('正在解析内容: ' + contentUrl);
+  //console.log('正在解析内容: ' + contentUrl);
   const $ = await loadPage(contentUrl);
   const h1 = $('.text_c h1')[0].children, h2 = $('.text_c h2')[0].children;
   const title = `${h1.length ? h1[0].data : ''}${h2.length ? ' ' + h2[0].data : ''}`;
